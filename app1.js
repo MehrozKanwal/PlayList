@@ -19,10 +19,10 @@ function loadData(e) {
   var title = document.getElementById('title');
   if (title.value.includes("youtube")) {
     var change = title.value.replace("watch?v=", "embed/");
-title.value = "";
-    
   }
-  
+ else if(title.value.includes('youtu')){
+  var change = title.value.replace('https://youtu.be','https://www.youtube.com/embed')
+}
   document.querySelector("#myFrame").setAttribute('src' , change);
   
  
@@ -33,9 +33,7 @@ title.value = "";
   else {
     videosObj = JSON.parse(videos)
   }
-  // let myObj = {
-  //  change
-  // }
+  title.value = "";
   videosObj.unshift(change);
   localStorage.setItem("videos", JSON.stringify(videosObj));
   showData();
